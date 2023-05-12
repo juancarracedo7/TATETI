@@ -7,7 +7,6 @@ function App() {
 
   return (
    <>
-   <h1>Tateti con CI/CD</h1>
    <Tateti/>
    </>
   )

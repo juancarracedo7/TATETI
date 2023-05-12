@@ -1,4 +1,4 @@
-// complete
+
 
 FROM node:12.18.3-alpine3.12
 
@@ -12,5 +12,4 @@ COPY . /app
 
 CMD ["npm", "start"]
 
-# Path: .dockerignore
-// complete
+

@@ -9,9 +9,9 @@ on:
     branches: [ develop, main ]
 
 jobs:
-  build:
-
+  develop:
     runs-on: ubuntu-latest
+    environment: develop
 
     strategy:
       matrix:
@@ -30,3 +30,27 @@ jobs:
        # npm test
       env:
         CI: true
+    
+  production:
+    runs-on: ubuntu-latest
+    environment: production
+    needs: [develop]
+
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x, 15.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: npm install, build, and test
+      run: |
+        npm ci
+        npm run build --if-present
+       # npm test
+      env:
+        CI: true
+    

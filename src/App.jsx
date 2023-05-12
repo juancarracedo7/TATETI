@@ -7,6 +7,7 @@ function App() {
 
   return (
    <>
+   <h1>Contador: {count}</h1>
    <Tateti/>
    </>
   )

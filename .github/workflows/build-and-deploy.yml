@@ -1,39 +1,42 @@
-#creame un workflow con 2 enviroments
+#creame un workflow con 2 enviroments uno llamado develop y el otro main
 
-name: CI
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+  name: CI
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    environment: develop
+  on:
+    push:
+      branches: [ main ]
+    pull_request:
+      branches: [ main ]
 
-    steps:
-    - uses: actions/checkout@v2
+  jobs:
+    build:
+      runs-on: ubuntu-latest
 
-    - name: Setup Node.js environment
-      uses: actions/setup-node@v1
-      with:
-        node-version: '12.x'
+      steps:
+      - uses: actions/checkout@v2
 
-    - name: Install dependencies
-      run: npm install
-  main:
-    runs-on: ubuntu-latest
-    environment: main
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
 
-    steps:
-    - uses: actions/checkout@v2
+      - name: Install Dependencies
+        run: npm install
 
-    - name: Setup Node.js environment
-      uses: actions/setup-node@v1
-      with:
-        node-version: '12.x'
+      - name: Lint
+        run: npm run lint
 
-    - name: Install dependencies
-      run: npm install
+      - name: Build
+        run: npm run build
+
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
+          publish_branch: develop
+
+      
+    

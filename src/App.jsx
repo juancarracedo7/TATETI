@@ -8,6 +8,7 @@ function App() {
   return (
    <>
    <h1>Contador: {count}</h1>
+   <h1>Juancito Docker</h1>
    <Tateti/>
    </>
   )

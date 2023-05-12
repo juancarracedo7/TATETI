@@ -1,39 +1,36 @@
 #creame un workflow con 2 enviroments uno llamado develop y el otro main
 
+name : PRUEBA DE GITHUB ACTIONS
 
-  name: CI
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
-  on:
-    push:
-      branches: [ main ]
-    pull_request:
-      branches: [ main ]
+jobs:
 
-  jobs:
-    build:
-      runs-on: ubuntu-latest
+  develop:
+    runs-on: ubuntu-latest
+    environment: develop
 
-      steps:
-      - uses: actions/checkout@v2
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run a one-line script
+      run: echo Hello, world!
+    - name: Run a multi-line script
+      run: |
+        echo Add other actions to build,
+        echo test, and deploy your project.
+  main:
+    runs-on: ubuntu-latest
+    environment: main
 
-      - name: Setup Node
-        uses: actions/setup-node@v1
-        with:
-          node-version: '12.x'
-
-      - name: Install Dependencies
-        run: npm install
-
-      - name: Build
-        run: npm run build
-
-
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
-          publish_branch: develop
-
-      
-    
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run a one-line script
+      run: echo Hello, world!
+    - name: Run a multi-line script
+      run: |
+        echo Add other actions to build,
+        echo test, and deploy your project.

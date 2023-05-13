@@ -22,7 +22,7 @@ spec:
         app: ta-te-ti
     spec:
       containers:
-      - name: ta-te-ti
+      - name: tateti-container
         image: <IMAGE>
         securityContext:
           privileged: true
@@ -33,11 +33,9 @@ spec:
         resources:
           requests:
             cpu: 100m
-            limits:
-              cpu: 100m
-
+          limits:
+            cpu: 100m
 ---
-
 apiVersion: v1
 kind: Service
 metadata:
@@ -47,12 +45,9 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-  - name: http
-    protocol: TCP
-    port: 80
-    targetPort: 5000
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 5000
   selector:
     app: ta-te-ti
-    
-    
-```

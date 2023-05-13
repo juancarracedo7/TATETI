@@ -38,9 +38,6 @@ jobs:
       - name: save config cluster
         run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 tateti-cluster
 
-      - name: Build of the app
-        run: npm install && npm run build
-
       - name: Deploy
         run: kubectl apply -f $GITHUB_WORKSPACE/config/deployment.yml
 

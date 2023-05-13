@@ -7,7 +7,7 @@ function App() {
 
   return (
    <>
-   <h1>JUAN</h1>
+   <h1>JUAN Y SOFI</h1>
    <Tateti/>
    </>
   )

@@ -15,8 +15,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Update SHA
-        run : echo $GITHUB_SHA > $GITHUB_WORKSPACE/ta-te-ti/_meta
-
+        run : echo $GITHUB_SHA | head -c7 > SHA.txt
 
       - name: Build Image
         run : docker build -t registry.digitalocean.com/tateti-container/ta-te-ti:$(echo $GITHUB_SHA | head -c7) .

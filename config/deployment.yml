@@ -32,9 +32,9 @@ spec:
           hostPort: 80
         resources:
           requests:
-            cpu: 100m
+            cpu: 600m
           limits:
-            cpu: 100m
+            cpu: 600m
 ---
 apiVersion: v1
 kind: Service

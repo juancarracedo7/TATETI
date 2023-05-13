@@ -30,3 +30,9 @@ jobs:
 
       - name: Push Image
         run : docker push registry.digitalocean.com/tateti-container/ta-te-ti:$(echo $GITHUB_SHA | head -c7)
+
+      - name: Update Deploy File
+        run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|registry.digitalocean.com/tateti-container/ta-te-ti:'${TAG}'|' $GITHUB_WORKSPACE/config/deployment.yml
+
+      - name: save config cluster
+        run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 tateti-cluster

@@ -48,6 +48,6 @@ spec:
     - name: http
       protocol: TCP
       port: 80
-      targetPort: 5000
+      targetPort: 5173
   selector:
     app: ta-te-ti

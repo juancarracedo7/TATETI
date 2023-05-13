@@ -19,6 +19,6 @@ jobs:
 
 
       - name: Build Image
-        run : docker build -t registry.digitalocean.com/tateti-container/TATETI:$(echo $GITHUB_SHA | head -c7) .
+        run : docker build -t registry.digitalocean.com/tateti-container/ta-te-ti:$(echo $GITHUB_SHA | head -c7) .
         
   

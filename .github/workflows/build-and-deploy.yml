@@ -12,11 +12,6 @@ jobs:
 
     steps:
       
-      - name: Buil de la app
-        run: |
-          cd app
-          npm run build  
-              
       - name: Checkout Main
         uses: actions/checkout@v2
 

@@ -39,3 +39,6 @@ jobs:
 
       - name: Deploy
         run: kubectl apply -f $GITHUB_WORKSPACE/config/deployment.yml
+
+      - name: Verify Deploy
+        run: kubectl rollout status deployment/ta-te-ti

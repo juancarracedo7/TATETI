@@ -11,13 +11,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Build
+        run: npm install && npm run build
       
       - name: Checkout Main
-      uses: actions/checkout@v2
-      
-      -name: Build
-        run: npm install && npm run build
-        
+        uses: actions/checkout@v2
+    
       - name: Update SHA
         run : echo $GITHUB_SHA > $GITHUB_WORKSPACE/dist/_meta
 
